@@ -1,5 +1,5 @@
 import React from 'react';
-import PopOrderedList from '@/components/PopOrderedList';
+import PopOrderedList from '../components/PopOrderedList';
 import App from '../components/App';
 
 export default function Pop() {

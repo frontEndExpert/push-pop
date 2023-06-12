@@ -2,58 +2,101 @@ import NodeObject from "./NodeObject";
 import OrderedLinkedList from "./OrderedLinkedList";
 import { callback } from "./callback";
 
-class pushOrderedListClass extends OrderedLinkedList {
-    //head: NodeObject | null = null;
-
-    // newNode = new NodeObject({
-    //     data: null,
-    //     next: null,
-    //     previous: null,
-    // });
+class PushOrderedListClass extends OrderedLinkedList {
 
     push(data: any) {
-        this.newNode.data = data;
+        if (!data || data.length === 0 || data == null) return;
+
+        const newNode: NodeObject = new NodeObject({
+            data: data,
+            next: this.head,
+            previous: null,
+        });
 
         if (this.head === null) {
-            this.head = this.newNode;
-            console.log("this.head.data1", this.head.data);
+            newNode.data = newNode.data.data
+            newNode.next = null;
+            newNode.previous = null;
+            this.head = newNode;
         } else {
-            this.newNode.next = this.head;
-            this.head.previous = this.newNode;
-
-            console.log("this.newNode", data);
-            console.log("this.newNode.data", this.newNode.data);
-            console.log("this.head.data2", this.head.data);
+            newNode.data = newNode.data.data
+            newNode.next = this.head;
+            newNode.previous = null;
+            this.head.previous = newNode;
+            newNode.next.previous = newNode;
         }
-        let temp = this.printLinkedList("pushEnd", this.head);
-        console.log(temp);
+        this.head = newNode;
+
+
+        let printThis = this.printLinkedList(this.head) as string;
+        //console.log(printThis)
+        return printThis;
     }
 
     pop() {
+        this.head = this.head;
         if (this.head === null) {
             return;
         }
-
         // Call the placeHead() method to find the biggest node and place it in the head of the linked list.
-        let orderedWithBiggest = this.placeHead().head;
-        console.log("orderedWithBiggest", orderedWithBiggest);
-        this.printLinkedList("pop bigest", orderedWithBiggest);
-        this.printLinkedList("head pop", this.head);
-        // Remove the biggest node from the linked list.
-        // if (orderedWithBiggest === console.log(orderedWithBiggest);.head) {
-        //     this.head.next = null;
-        //     this.head = this.head.previous;
-        // } else {
-        //     orderedWithBiggest.previous.next = orderedWithBiggest.next;
-        //     orderedWithBiggest.next.previous = orderedWithBiggest.previous;
-        // }
+        let output = this.head.data;
 
-        // Return the data of the removed node.
+        // if only head remove head from list
+        if (this.head.next === null) {
+            this.head = null;
+            // console.log('pop output', output);
+            let printThis = this.printLinkedList(this.head);
+            // console.log(printThis)
+            return output;
+        }
+        let specialNode = {
+            data: this.head.data,
+            next: null as NodeObject | null,
+            previous: null as NodeObject | null,
+        }
 
-        return orderedWithBiggest?.data || '';
+        let current = this.head as NodeObject | null;
+        // finding the special one
+        while (current !== null && specialNode !== null) {
+            if (callback(current.data, specialNode.data)) {
+                specialNode.data = current.data;
+            }
+            current = current.next;
+        }
+        output = specialNode?.data;
+
+        //if special is in the head
+        if (JSON.stringify(output) === JSON.stringify(this.head.data)) {
+            if (this.head.next !== null) this.head.next.previous = null;
+            this.head = this.head.next;
+            let printThis = this.printLinkedList(this.head);
+            // console.log(printThis)
+            return output;
+        }
+
+        current = this.head as NodeObject | null;
+        while (current !== null && specialNode !== null) {
+            if (JSON.stringify(current.data) === JSON.stringify(output)) {
+                specialNode.data = current.data;
+                specialNode.previous = current.previous;
+                specialNode.next = current.next;
+                break;
+            }
+            current = current.next;
+        }
+
+        //remove the specialNode
+        if (specialNode.previous) specialNode.previous.next = specialNode.next;
+        if (specialNode.next) specialNode.next.previous = specialNode.previous;
+
+        // removing the special node from the list
+        current = this.head;
+
+        let printThis = this.printLinkedList(this.head);
+        // console.log(printThis)
+        return JSON.stringify(output);
     }
-
 
 }
 
-export default pushOrderedListClass;
+export default PushOrderedListClass;

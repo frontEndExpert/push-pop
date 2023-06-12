@@ -1,21 +1,17 @@
 import NodeObject from "./NodeObject";
 
+// for pop by biggest Integer value
+export function callback(currentData: any, secondData: any) {
+    // example for compare by integer size
+    // console.log('callback ', currentData, '>', secondData, parseInt(currentData) > parseInt(secondData))
+    return (parseInt(currentData) > parseInt(secondData));
+}
 
-// export function callback(node: NodeObject, position: number) {
-//     if( node.previous === null ) {
-//     node.position = position;
-//     } else {
-//         if(node.data > node.previous.data){
-//             node.position = node.previous.position + 1;
-//         } else {
-//             node.previous.position = node.previous.position + 1;
-//             node.position = node.previous.position;
-//             }
-//         }
-//     }
+// for OBJECT LIKE {id: 1, name:"Aylon" ....} pop by ID
+
+// export function callback(currentData: any, secondData: any) {
+//     console.log(currentData, secondData);
+//     console.log('callback ', currentData, '>', secondData, parseInt(currentData) > parseInt(secondData))
+//     return (parseInt(currentData.id) > parseInt(secondData.id));
 // }
 
-export function callback(currentNode: NodeObject, secondNode: NodeObject) {
-
-    return (currentNode.data < secondNode.data);
-}

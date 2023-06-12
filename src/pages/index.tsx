@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 
-import PopOrderedList from '@/components/PopOrderedList'
-import App from '@/components/App'
+import PopOrderedList from '../components/PopOrderedList'
+import App from '../components/App'
 
 
 

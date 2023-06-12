@@ -1,0 +1,44 @@
+.list {
+	display: flex;
+	flex-flow: row-reverse nowrap;
+	justify-content: center;
+	width: 100%;
+	gap: 20px;
+}
+
+.navItem {
+	list-style: none;
+	display: block;
+	width: 200px;
+	margin: 10px;
+	padding: 0;
+	text-align: center;
+	border-radius: 5px;
+	background-color: aquamarine;
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.link {
+	width: 200px;
+	height: 80px;
+	padding: 0;
+	text-decoration: none;
+}
+
+.linkable {
+	width: 100%;
+	height: 100%;
+	padding: auto;
+
+	text-decoration: none;
+}
+.navItem:hover {
+	background-color: rgb(148, 247, 214);
+}
+
+.active {
+	background-color: rgb(178, 255, 229);
+	border: 1px solid blue;
+}

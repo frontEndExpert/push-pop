@@ -1,5 +1,5 @@
 import React from 'react';
-import PushOrderedList from '@/components/PushOrderedList';
+import PushOrderedList from '../components/PushOrderedList';
 import App from '../components/App';
 
 export default function Push() {
