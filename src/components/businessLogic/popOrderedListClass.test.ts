@@ -1,10 +1,6 @@
 import PopOrderedListClass from "./popOrderedListClass";
 
-
-
 describe('testing PopOrderedListClass', () => {
-
-
 
     test('should pop biggest 3 from the list', () => {
         const list = new PopOrderedListClass();
@@ -40,12 +36,12 @@ describe('testing PopOrderedListClass', () => {
         const pushtime2 = pushend2 - pushstart2;
         const time2 = end - start;
 
-        console.log(
-            'push time of 1 nodes=O(1) ', pushtime1,
-            'push time of 998 nodes=O(1)*n/n ', pushtime2,
-            'pop time of the last in list <= O(n) ', time2,
-            'pop time from small node X 998 ~=O(1) * n', time1);
-        console.log(time1.toString(), time2.toString());
+        // optional printing  console.log(
+        // 'push time of 1 nodes=O(1) ', pushtime1,
+        // 'push time of 998 nodes=O(1)*n/n ', pushtime2,
+        // 'pop time of the last in list <= O(n) ', time2,
+        // 'pop time from small node X 998 ~=O(1) * n', time1);
+        // console.log(time1.toString(), time2.toString());
         expect(output).toBe(999);
         expect(time1).toBeLessThanOrEqual(time2);
         expect(pushtime1).toBeLessThan(pushtime2);

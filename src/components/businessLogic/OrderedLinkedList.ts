@@ -13,7 +13,6 @@ class OrderedLinkedList {
     let output = '';
     if (head?.data === undefined || head.data === null) return;
     while (head !== null) {
-      //console.log(head.data as number);
       output += head.data + ' --> ';
       head = head.next;
     }

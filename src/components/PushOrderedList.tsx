@@ -22,6 +22,7 @@ const PushOrderedList = () => {
     }
 
     const handlePush = () => {
+        setEmptyError(false);
         if (pushListClass) {
             if (inputRef.current?.value.trim() === '') {
                 setEmptyError(true);
@@ -38,7 +39,6 @@ const PushOrderedList = () => {
             const outputThis = pushListClass.pop();
 
             setOutput(outputThis);
-            console.log("handlePop", pushListClass);
         } else console.log("pushListClass is null");
     }
 

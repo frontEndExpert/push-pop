@@ -29,7 +29,6 @@ class PushOrderedListClass extends OrderedLinkedList {
 
 
         let printThis = this.printLinkedList(this.head) as string;
-        //console.log(printThis)
         return printThis;
     }
 
@@ -38,15 +37,13 @@ class PushOrderedListClass extends OrderedLinkedList {
         if (this.head === null) {
             return;
         }
-        // Call the placeHead() method to find the biggest node and place it in the head of the linked list.
+
         let output = this.head.data;
 
         // if only head remove head from list
         if (this.head.next === null) {
             this.head = null;
-            // console.log('pop output', output);
             let printThis = this.printLinkedList(this.head);
-            // console.log(printThis)
             return output;
         }
         let specialNode = {
@@ -69,7 +66,7 @@ class PushOrderedListClass extends OrderedLinkedList {
         if (JSON.stringify(output) === JSON.stringify(this.head.data)) {
             if (this.head.next !== null) this.head.next.previous = null;
             this.head = this.head.next;
-            let printThis = this.printLinkedList(this.head);
+            // optional printing of list - let printThis = this.printLinkedList(this.head); 
             // console.log(printThis)
             return output;
         }
@@ -92,7 +89,7 @@ class PushOrderedListClass extends OrderedLinkedList {
         // removing the special node from the list
         current = this.head;
 
-        let printThis = this.printLinkedList(this.head);
+        // let printThis = this.printLinkedList(this.head);
         // console.log(printThis)
         return JSON.stringify(output);
     }

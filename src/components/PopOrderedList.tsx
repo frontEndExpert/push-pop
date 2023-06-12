@@ -10,8 +10,6 @@ const PopOrderedList = () => {
     const [emptyError, setEmptyError] = React.useState<boolean>(false);
     const inputPopRef = React.useRef<HTMLInputElement>(null);
 
-    //const popListClass = new PopOrderedListClass();
-
     useEffect(() => {
         setPopListClass(new PopOrderedListClass());
     }, []);
@@ -21,14 +19,13 @@ const PopOrderedList = () => {
     }
 
     const handlePush = (event: any) => {
+        setEmptyError(false);
         if (popListClass) {
             if (inputPopRef.current?.value.trim() === '') {
                 setEmptyError(true);
             } else {
-                //const tempOutput = popListClass.push(inputPopRef.current?.value)
                 popListClass.push(inputPopRef.current?.value)
                 let temp = popListClass.printLinkedList(popListClass.head);
-                //setOutput(tempOutput || '');
                 setOutput(temp || '');
             }
         } else console.log("popListClass is null");
@@ -38,8 +35,6 @@ const PopOrderedList = () => {
         if (popListClass) {
             const vOutput = popListClass.pop();
 
-            //let temp = popListClass.printLinkedList(popListClass.head);
-            //setOutput(temp || '');
             setOutput(vOutput);
             console.log("handlePop", popListClass);
         } else console.log("pushListClass is null");
@@ -57,6 +52,7 @@ const PopOrderedList = () => {
                 <button type="button" className={styles.button} onClick={handlePush}>Push</button>
                 <button type="button" className={styles.button} onClick={handlePop}>Pop</button>
             </div>
+            {emptyError && <div className={styles.error}>Please enter a value into the input box.</div>}
             <div className={styles.output} >{output}</div>
         </div>
     )

@@ -6,8 +6,6 @@ describe('testing pushOrderedListClass', () => {
     test('should push integer to the list', () => {
         const list = new PushOrderedListClass();
         list.push(1);
-        // list.push(2);
-        // list.push(3);
         expect(list.head?.data).toBe(1)
     });
 
@@ -118,5 +116,3 @@ describe('testing pushOrderedListClass', () => {
 
 
 });
-
-    // { data: 2, next: { data: 1, next: null }, previous: { data: 3, next: { data: 2 } } }

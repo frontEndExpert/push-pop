@@ -50,8 +50,8 @@ class PopOrderedListClass extends OrderedLinkedList {
                 currentNode = currentNode.next;
             }
         }
-        let printThis = this.printLinkedList(this.head);
-        //console.log(printThis)
+        // optional printing - let printThis = this.printLinkedList(this.head);
+        // console.log(printThis)
     }
 
     pop() {
@@ -70,8 +70,8 @@ class PopOrderedListClass extends OrderedLinkedList {
             const output = this.head.data;
             this.head.next.previous = null;
             this.head = this.head.next;
-            let printThis = this.printLinkedList(this.head);
-            //console.log(printThis)
+            // let printThis = this.printLinkedList(this.head);
+            // console.log(printThis)
             return output;
         }
     }
